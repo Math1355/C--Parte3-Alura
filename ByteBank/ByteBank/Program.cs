@@ -7,30 +7,37 @@ namespace ByteBank
     {
         static void Main(string[] args)
         {
-            GerenciadorBonificacao gerenciador = new GerenciadorBonificacao();
+            CalcularBonificacao();
 
-            Funcionario carlos = new Funcionario();
+            Console.ReadLine();
+        }
 
-            carlos.Nome = "Carlos";
-            carlos.CPF = "546.879.157-20";
-            carlos.Salario = 2000;
+        public static void CalcularBonificacao()
+        {
+            GerenciadorBonificacao gerenciadorBonificacao = new GerenciadorBonificacao();
 
-            gerenciador.Registrar(carlos);
+            Designer pedro = new Designer("833.222.048-39");
+            pedro.Nome = "Pedro";
 
-            Diretor roberta = new Diretor();
+            Diretor roberta = new Diretor("159.753.398-04");
             roberta.Nome = "Roberta";
-            roberta.CPF = "454.658.148-30";
-            roberta.Salario = 5000;
 
-            gerenciador.Registrar(roberta);
+            Auxiliar igor = new Auxiliar("981.198.778-53");
+            igor.Nome = "Igor";
 
-            Console.WriteLine(carlos.Nome);
-            Console.WriteLine(carlos.GetBonificacao());
+            GerenteDeConta camila = new GerenteDeConta("326.985.628-89");
+            camila.Nome = "Camila";
 
-            Console.WriteLine(roberta.Nome);
-            Console.WriteLine(roberta.GetBonificacao());
+            Desenvolvedor guilherme = new Desenvolvedor("456.175.468-20");
+            guilherme.Nome = "Guilherme";
 
-            Console.WriteLine("Total de bonificações: R$ " + gerenciador.GetTotalBonificacao());
+            gerenciadorBonificacao.Registrar(guilherme);
+            gerenciadorBonificacao.Registrar(pedro);
+            gerenciadorBonificacao.Registrar(roberta);
+            gerenciadorBonificacao.Registrar(igor);
+            gerenciadorBonificacao.Registrar(camila);
+
+            Console.WriteLine("Total de bonificações do mês " + gerenciadorBonificacao.GetTotalBonificacao());
         }
     }
 }
